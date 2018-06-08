@@ -323,7 +323,10 @@ if [ "$RC_CURL" = "0" -a "$http_code" = "200" ]; then
   RC=$RLM_MODULE_FAIL                        # Module failed
 fi
 
-cleanups                                 # Cleanups
+if [ "$VERBOSITY" != "3" ]; then
+  cleanups
+fi
+
 inform "RC=$RC"
 
 # Echo to the console the output pairs
