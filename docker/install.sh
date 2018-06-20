@@ -60,24 +60,24 @@ if [ ! -e $cfg/mods-enabled/ldap ]; then
   ln -s $cfg/mods-available/ldap $cfg/mods-enabled/ldap
 fi
 
-## module exec_mobileid
-if [ ! -e $cfg/mods-available/exec_mobileid ]; then
+## module mobileid
+if [ ! -e $cfg/mods-available/mobileid ]; then
  # Use the sample file provided from the repository
-  cp $opt/samples/modules/exec_mobileid $cfg/mods-available/
+  cp $opt/samples/modules/mobileid $cfg/mods-available/
  # Enable the module
-  ln -s $cfg/mods-available/exec_mobileid $cfg/mods-enabled/exec_mobileid
+  ln -s $cfg/mods-available/mobileid $cfg/mods-enabled/mobileid
 fi
 
-## module exec_mobileid
-if [ ! -e $cfg/mods-available/exec_ldapupdate ]; then
+## module mobileid_ldapupdate
+if [ ! -e $cfg/mods-available/mobileid_ldapupdate ]; then
  # Use the sample file provided from the repository
-  cp $opt/samples/modules/exec_ldapupdate $cfg/mods-available/
+  cp $opt/samples/modules/mobileid_ldapupdate $cfg/mods-available/
  # Enable the exec_ldapupdate module ?
   if [ "$LDAP_UPDATE" = "enabled" ]; then
    # Enable it in the site
     sed -i -e "s/.*mobileid-ldapupdate.*/\t\tmobileid-ldapupdate/" $cfg/sites-available/mobileid
    # Enable the module
-    ln -s $cfg/mods-available/exec_ldapupdate $cfg/mods-enabled/exec_ldapupdate
+    ln -s $cfg/mods-available/mobileid_ldapupdate $cfg/mods-enabled/mobileid_ldapupdate
   fi
 fi
 
